@@ -31,7 +31,7 @@ public class InterfaceUser {
         //variaveis globais 
         boolean exit = false;
         String inicial;
-        String[] divisaofinal;
+        String[] divisaofinal=null;
 
         //entradas do usuário
         System.out.println("------\t Informe a STRING principal \t------");

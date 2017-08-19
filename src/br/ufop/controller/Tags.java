@@ -18,13 +18,25 @@ public class Tags {
    private String COMMENT = "[\\*a-z][z-a]*[A-Z][Z-A]*[0-9][9-0\\*]*";
    
    public String[] tag(String entrada){
-        String[] vetTags;
-        vetTags = entrada.split(":", 2);
-        System.out.println("Posicao 0 da TAG(NOME): "+vetTags[0]);
-        System.out.println("Posicao 1 da TAG(ER): "+vetTags[1]);
-        return vetTags;
+        //String erro = "A entrada informada não é uma TAG";
+        /*String[] veTags = null;
+        
+        veTags = entrada.split(":", 2);
+     */String[] arr;
+       arr = new String[entrada.length()];
+          for(int i = 0; i < entrada.length(); i++){
+            arr[i] = String.valueOf(entrada.charAt(i));
+          }
+        return arr;
+        
+        /*else{
+            return veTags=erro;
+        }
+        */
+    //return veTags;
     }
 }
+
 
 
 
