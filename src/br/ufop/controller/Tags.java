@@ -1,6 +1,9 @@
 package br.ufop.controller;
 //import java.util.regex.Pattern;
 //import java.util.regex.Matcher;
+
+import java.util.Arrays;
+
 //import  java.util.regex.PatternSyntaxException:
 
 
@@ -11,31 +14,43 @@ package br.ufop.controller;
  */
 public class Tags {
     //Estruturas com os padroes de expressão regular, classes regex
-   private String INT = "[0-9][9-0]*";
-   private String VAR = "[a-z][z-a]*[A-Z][Z-A]*[0-9][9-0]*";
-   private String EQUALS = "[=]";
-   private String SPACE = "[ ]";
-   private String COMMENT = "[\\*a-z][z-a]*[A-Z][Z-A]*[0-9][9-0\\*]*";
+   private final String INT = "[0-9][9-0]*";
+   private final String VAR = "[a-z][z-a]*[A-Z][Z-A]*[0-9][9-0]*";
+   private final String EQUALS = "[=]";
+   private final String SPACE = "[ ]";
+   private final String COMMENT = "[\\*a-z][z-a]*[A-Z][Z-A]*[0-9][9-0\\*]*";
    
-   public String[] tag(String entrada){
-        //String erro = "A entrada informada não é uma TAG";
-        /*String[] veTags = null;
+    /**
+     *
+     * @param inicial
+     * @return
+     */
+    /*public String[] tag(String inicial){
+       String[] fim = null;
         
-        veTags = entrada.split(":", 2);
-     */String[] arr;
-       arr = new String[entrada.length()];
-          for(int i = 0; i < entrada.length(); i++){
-            arr[i] = String.valueOf(entrada.charAt(i));
-          }
-        return arr;
+       String[] arr = inicial.split(":");
+         
+       int i;
+       for ( i = 0; i < arr.length; i++){   
+            fim[i] += arr[i];   
+       }
+       
+       //System.out.println(result);
+       //fim = arr;
+       //System.out.println(arr);
+       //arr = entrada.split(":", 2);
+       /*for(int i = 0; i < entrada.length(); i++){
+           arr[i] = String.valueOf(entrada.charAt(i));
+       }*/
+       //return fim;
         
         /*else{
             return veTags=erro;
         }
         */
     //return veTags;
-    }
 }
+
 
 
 

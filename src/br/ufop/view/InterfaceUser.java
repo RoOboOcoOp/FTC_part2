@@ -4,7 +4,6 @@ import static br.ufop.model.GerArquivo.Read;
 import static br.ufop.model.GerArquivo.ReadTag;
 import static br.ufop.model.GerArquivo.WriteTag;
 import static br.ufop.model.GerArquivo.WriteTagVet;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.*;
 import java.util.Arrays;
@@ -31,7 +30,7 @@ public class InterfaceUser {
         //variaveis globais 
         boolean exit = false;
         String inicial;
-        String[] divisaofinal=null;
+        String[] divisaofinal;
 
         //entradas do usuário
         System.out.println("------\t Informe a STRING principal \t------");
@@ -42,6 +41,7 @@ public class InterfaceUser {
         
         
         do {
+            
             String menu = null;
             System.out.println("------\t Analisador de Strings \t------");
             System.out.println(":f - Realizar divisão em tags da string do arquivo informado;");
@@ -129,10 +129,19 @@ public class InterfaceUser {
                      * implementado pelo Controler (Gerenciador) metodo
                      * responsável comparaTags(string);
                      */
-                    
+                    String[] fim = null;
+        
+                    String[] arr = inicial.split(":",2);
+         
+                    int i;
+                    for ( i = 0; i < arr.length; i++){   
+                        fim[i] += arr[i];   
+                    }
                    
                     System.out.println("------\t Realiza a divisão em tags da STRING informada \t-------");
-                    divisaofinal = tag(inicial);
+                    for(i=0; i<fim.length;i++){
+                        System.out.println(fim[i]);
+                    }
                     System.out.println("String dividida com sucesso!!!\n");
                 }
                 break;
@@ -194,23 +203,7 @@ public class InterfaceUser {
 
         } while (exit == false);
     }
-
-    private static String comparaTags(String inicial) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private static String separaTag(String nextLine) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
-    private static String[] resultaTAG(String inicial) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private static String[] tag(String inicial) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }
 
    
