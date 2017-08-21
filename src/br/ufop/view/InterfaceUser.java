@@ -1,5 +1,6 @@
 package br.ufop.view;
 
+import br.ufop.controller.Tags;
 import static br.ufop.model.GerArquivo.Read;
 import static br.ufop.model.GerArquivo.ReadTag;
 import static br.ufop.model.GerArquivo.WriteTag;
@@ -9,6 +10,8 @@ import java.lang.*;
 import java.util.Arrays;
 import static java.util.Date.parse;
 import java.util.Scanner;
+import java.util.regex.Pattern;
+import jdk.nashorn.internal.runtime.regexp.joni.Matcher;
 
 /**
  * Interface gerenciadora com o usuario onde estão contidos as opções do menu.
@@ -129,19 +132,50 @@ public class InterfaceUser {
                      * implementado pelo Controler (Gerenciador) metodo
                      * responsável comparaTags(string);
                      */
-                    String[] fim = null;
-        
-                    String[] arr = inicial.split(":",2);
-         
-                    int i;
-                    for ( i = 0; i < arr.length; i++){   
-                        fim[i] += arr[i];   
-                    }
-                   
+                    String INT = "[0-9]+"; //[\\d\\d]*, [0-9][9-0]*
+                    String VAR = "[a-zA-Z0-9]+";
+                    String EQUALS = "[=]+";
+                    String SPACE = "[ ]+";
+                    String COMMENT = "[\\/*[a-zA-Z0-9]+\\*/]*";
+                    
+                                    
                     System.out.println("------\t Realiza a divisão em tags da STRING informada \t-------");
-                    for(i=0; i<fim.length;i++){
-                        System.out.println(fim[i]);
-                    }
+                    Pattern pat1 = Pattern.compile(INT);
+                    java.util.regex.Matcher mat1 = pat1.matcher(inicial);                 
+                    Pattern pat2 = Pattern.compile(VAR);
+                    java.util.regex.Matcher mat2 = pat2.matcher(inicial);
+                    Pattern pat3 = Pattern.compile(EQUALS);
+                    java.util.regex.Matcher mat3 = pat3.matcher(inicial);
+                    Pattern pat4 = Pattern.compile(SPACE);
+                    java.util.regex.Matcher mat4 = pat4.matcher(inicial);
+                    Pattern pat5 = Pattern.compile(COMMENT);
+                    java.util.regex.Matcher mat5 = pat5.matcher(inicial);
+                    
+                    String[] resultado = null;
+                    int i = inicial.length();
+                    do{
+                        if(mat4.find()){
+                            System.out.println("ER: "+SPACE);
+                            System.out.print("SPACE"+mat4.start()+" ");
+                        }else if(mat2.find()){
+                            System.out.println("ER: "+EQUALS);
+                            System.out.print("EQUALS"+mat2.start()+" ");
+                        }else if(mat5.find()){
+                            System.out.println("ER: "+COMMENT);
+                            System.out.print("COMMENT"+mat5.start()+" ");
+                        }else if(mat2.find()){
+                            System.out.println("ER: "+VAR);
+                            System.out.print("VAR"+mat2.start()+" ");
+                        }else if(mat1.find()){
+                            System.out.println("ER: "+INT);
+                            System.out.print("INT"+mat1.start()+" ");
+                        }
+                    
+                        
+                        i--;
+                    }while(i!=0);
+                    
+                   
                     System.out.println("String dividida com sucesso!!!\n");
                 }
                 break;
@@ -202,6 +236,14 @@ public class InterfaceUser {
             }
 
         } while (exit == false);
+    }
+
+    private static String[] tag(String inicial) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static String divideTags(String inicial) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

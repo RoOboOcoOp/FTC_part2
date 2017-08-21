@@ -9,22 +9,29 @@ import java.util.ArrayList;
  * @since 04/07/2017
  */
 public class DividirTags {
+
+    /**
+     *
+     * @param entrada
+     * @return
+     */
+    @SuppressWarnings("ImplicitArrayToString")
     public String divideTags(String entrada){
-        // Recebe uma string ou arquivo cria estrutura de lista para receber cada TAG relativa a entrada do usuário em sua posição correspondente
-        /*int i;
-        ArrayList<String> copia_string;
-        copia_string = new ArrayList<>(100);
+        String erro = "Não informou TAG.";
+        if(entrada.contains(":")){
+            String[] arr = entrada.split("[:]",2);
+            return arr.toString();
+        }else
+        return erro;
         
-        
-        for(i=0;i<(entrada.length());i++){
-            copia_string.add(i, entrada[i]);
-        }
-        return copia_string;*/
-        return entrada;
     }
     public String divideTagsArquivo(String entrada){
-        
-        return entrada;
+        String erro = "Não informou TAG.";
+        if(entrada.contains(":")){
+            String[] arr = entrada.split("[:]",2);
+            return arr.toString();
+        }else
+        return erro;
     }
     
 }
